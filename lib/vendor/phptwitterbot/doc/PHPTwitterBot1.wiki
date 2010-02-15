@@ -1,0 +1,89 @@
+#summary PHPTwitterBot v1 Documentation
+
+== Introduction ==
+
+PHPTwitterBot v1.0 has been the first version released. This version is the actual stable one.
+
+== What's that? ==
+
+A simple [http://twitter.com/ Twitter] Bot written in PHP5, allowing to search and retweet things.
+
+== Quick example ==
+
+{{{
+<?php
+$bot = new TwitterBot('myusername', 'mypassw0rd');
+$bot->searchAndRetweet('rotfl', 'RT @%s: %s');
+}}}
+
+This code will search for the term _[http://search.twitter.com/search?q=rofl rotfl]_ in the twitter timeline, extract the first matching result and retweet it using the `RT @%s: %s` format, using the credentials provided in the class constructor.
+
+Of course, this script is intended to be run regularly, eg. using [http://en.wikipedia.org/wiki/Cron CRON]. 
+
+Oh, and because someone asked, you have of course to [http://twitter.com/signup create a dedicated Twitter account] for your bot. The `myusername` and `mypassw0rd` values are the credentials of your bot account.
+
+=== Real World Examples ===
+
+[http://twitter.com/roflwatcher Here] and [http://twitter.com/yukwatcher here] (hem, I'm sorry, really).
+
+== Miscelaneous ==
+
+The bot can follow the retweeted twit author using the third optional Boolean parameter of the `searchAndRetweet()` method:
+
+{{{
+<?php
+$bot = new TwitterBot('myusername', 'mypassw0rd');
+$bot->searchAndRetweet('rotfl', 'RT @%s: %s', true);
+}}}
+
+The bot can also check if he has followers, and then follow them as well:
+
+{{{
+<?php
+$bot = new TwitterBot('myusername', 'mypassw0rd');
+$bot->followFollowers();
+}}}
+
+By default, the class won't write anything to the console output (no cronmail), but you can activate debugging when instantiating the bot:
+
+{{{
+<?php
+$bot = new TwitterBot('myusername', 'mypassw0rd', true);
+}}}
+
+== Full Documentation ==
+
+Read the phpDoc, it's *really* simple.
+
+== Installation ==
+
+Just checkout the SVN repository from a command prompt:
+
+{{{
+$ svn checkout http://phptwitterbot.googlecode.com/svn/tags/1.0.0 phptwitterbot
+}}}
+
+Then just require the `TwitterBot.class.php` file:
+
+{{{
+<?php
+require_once 'phptwitterbot/TwitterBot.class.php';
+$bot = new TwitterBot('myusername', 'mypassw0rd');
+}}}
+
+== More to come? ==
+
+Honnestly, I don't know. Maybe a `TwitterBotsFarm` class? ;-)
+
+== License ==
+
+This code is released under the terms of the MIT license.
+
+== Disclaimer ==
+
+Of course, this code is not intended to be used for spamming. If you feel abused, please [http://twitter.zendesk.com/requests/portal/new report your problems directly to the Twitter team].
+
+== Dependencies ==
+
+ * This Twitter bot requires php5 5.2+ with [http://www.php.net/mb_string mb_string] functions enabled
+ * The [http://classes.verkoyen.eu/twitter/ PHP Twitter class] (BSD licensed - atm this class is bundled as the project doesn't provide SVN repository yet)
