@@ -22,8 +22,10 @@ class dmWidgetTwitterTimelineView extends dmWidgetPluginView
   protected function doRenderForIndex()
   {
     $tweets = array();
+
+    $viewVars = $this->getViewVars();
     
-    foreach($this->compiledVars['tweets'] as $tweet)
+    foreach($viewVars['tweets'] as $tweet)
     {
       $tweets[] = $tweet['text'];
     }
