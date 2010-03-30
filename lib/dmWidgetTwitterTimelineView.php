@@ -30,7 +30,7 @@ class dmWidgetTwitterTimelineView extends dmWidgetPluginView
       $tweets[] = $tweet['text'];
     }
     
-    return $vars['user'].' '.implode(', ', $tweets);
+    return $viewVars['user'].' '.implode(', ', $tweets);
   }
 
   protected function getUserTweets($user, $nb, $lifeTime)

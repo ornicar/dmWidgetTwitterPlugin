@@ -30,7 +30,7 @@ class dmWidgetTwitterSearchView extends dmWidgetPluginView
       $tweets[] = $tweet['text'];
     }
     
-    return $vars['query'].' '.implode(', ', $tweets);
+    return $viewVars['query'].' '.implode(', ', $tweets);
   }
 
   protected function searchTweets($query, $nb, $lifeTime)
