@@ -1,0 +1,17 @@
+global:
+  debug:      false
+  password:   foo
+bots:
+  myfirstbot:
+    password: bar
+    operations:
+      testA:
+        arguments:
+          foo: bar
+        periodicity: 900
+  mysecondbot:
+    operations:
+      testB:
+        arguments:
+          foo: bar
+        periodicity: 300
