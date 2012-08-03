@@ -9,7 +9,7 @@ class dmWidgetTwitterSearchForm extends dmWidgetPluginForm
       'required' => true,
       'min_length' => 3
     ));
-
+    
     $this->widgetSchema['nb_tweets'] = new sfWidgetFormInputText();
     $this->validatorSchema['nb_tweets'] = new sfValidatorInteger(array(
       'min' => 0,
@@ -31,6 +31,10 @@ class dmWidgetTwitterSearchForm extends dmWidgetPluginForm
     {
       $this->setDefault('life_time', 3600);
     }
+    
+    $this->getWidgetSchema()->setHelps(array(
+        'query' => 'Get query from: <a href="http://twitter.com/#!/search-advanced" target="_blank">http://twitter.com/#!/search-advanced</a>'          
+    ));
     
     parent::configure();
   }
